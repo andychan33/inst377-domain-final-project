@@ -4,30 +4,47 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Domain Website Project</title>
+    <title>Cleanup Website Project</title>
     <link rel="stylesheet" href="style.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
 <body>
     <div class="wrapper">
         <!-- wrapper  -->
-        <header class="header"><h1>Domain Homepage</h1></header>
+        <header class="header"><h1>Cleanup Homepage</h1></header>
         <div class="container">
             <div class="left_section box">
                 <!-- left inputs -->
                 <h3>Form and User Inputs</h3>
       
                 <form
-                  action="https://api.domainsdb.info/v1/domains/search"
+                  action="https://data.princegeorgescountymd.gov/resource/9tsa-iner.json"
                   class="box main_form"
                 > 
-                  <button type="button" id="data_load">Load Domain Data</button>
+                  <button type="button" id="data_load">Load Cleanup Data</button>
+                  <div>
+                    <label for="destro">Cleanup Org & Watershed</label>
+                    <input type="text" id="destro" name="destro"/>
+                  </div>
+                  <button type="button" id="generate">Generate List</button>
                 </form>
               </div>
               <div class="right_section box">
                 <!-- right section  -->
-                <h3>Domain Future Visualization</h3>
+                <h3>Domain Cleanup Visualization</h3>
+                <!-- ol class box might need an id after -->
+                <div>
+                  <canvas id="myChart"></canvas>
+                </div>
+                <ol class="box" id="cleanup_list">
+                  A global list of cleanup orgs + w_shed
+                </ol>
               </div>
         </div>
     </div>
+    <footer class="footer">
+      <a href="about_page.html">Go to About Page</a>
+  </footer>
+    <script src="script.js"></script>
 </body>
 </html>

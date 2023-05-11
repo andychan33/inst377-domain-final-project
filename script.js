@@ -13,7 +13,7 @@ function injectHTML(list) {
     const target = document.querySelector('#cleanup_list');
     target.innerHTML = '';
     list.forEach((item) => {
-        const str = `<li>${item.organization.concat(": ", item.major_wshed, ": ", item.number_bags)}</li>`;
+        const str = `<li>${item.creationdate.concat(",  ", item.number_bags, " bags")}</li>`;
         target.innerHTML += str;
     });
 }
@@ -63,7 +63,6 @@ function processChartData(passedData) {
             major_wshed: item.major_wshed
         }  
     })
-    //console.log(watershed_array);
 
     const dataForChart = watershed_array.reduce((col, item, idx) => {
         if (!col[item.major_wshed]) {
@@ -107,8 +106,6 @@ async function mainEvent() {
         const storedList = await results.json();
         localStorage.setItem('storedData', JSON.stringify(storedList));
         parsedData = storedList;
-        //console.log('table currentList');
-        //console.table(currentList);
         
         let chartData = processChartData(storedList);
         newChart = initChart(chart, chartData[0], chartData[1]);
@@ -148,7 +145,6 @@ async function mainEvent() {
     })
 
   
-
     clearDataButton.addEventListener('click', (event) => {
         console.log('clear browser data');
         localStorage.clear();

@@ -13,22 +13,63 @@
             <h1>About Page</h1>
         </header>
         <div class="container">
-            <div class="box">
-                <h3>What is this site about?</h3>
+            <div class="box left_section">
+                <h3>General Info</h3>
                 <div>
-                    <p> Future Text</p>
+                    <p>The main focus of this site is to visualize how many
+                        cleanups there are in the major watersheds of Prince 
+                        George's County via a bar chart. You can also see how
+                        many lightweight or heavyweight cleanups there were at
+                        each watershed by using the number of bags filter. 
+                    </p>
                 </div>
             </div>
-            <div class="box">
+            <div class="box left_section">
                 <h3>How to use this site?</h3>
-                <div>
-                    <p> Future Text as well</p>
+                <div class="box">
+                    First, click the "Load Cleanup Data" button.
+                    A bar chart will appear on the right.
+                </div>
+                <div class="box">
+                    <h4>Examine Random Data</h4>
+                        Click 'Generate List'. This produces a list of 10 cleanup
+                        operations under the bar chart. Each item in the list contains 
+                        the date of the cleanup and how many bags were used.
+                        The bar chart above should change to reflect the data of
+                        these 10 cleanups. You can click 'Generate List' again to 
+                        produce a new list.
+                </div>
+                <div class="box">
+                    <h4>Filter the Data</h4>
+                        The data is filtered based on how many bags were used to complete
+                        a cleanup. 
+                        <p>To use the text input filter, input a number from 1 to 10,
+                            click on some empty space, and wait for the bar chart and 
+                            list to update to reflect the filtered data.
+                        </p>
+                        <p>
+                            To use the dropdown menu filter, click to bring down the
+                            dropdown menu and select a number by clicking on it. Then wait
+                            for the bar chart and list to update to reflect the filtered data.
+                        </p>
+
+                        <h5>Output example with filter set to 9 bags</h5>
+                        <div><img src="filter_9_example.png" alt="Screenshot of bar chart and list with filter set to 9 bags"></div>
+                        
+                        These two options have the same functionality on the same data so feel
+                        free to use either. 
+                </div>
+                <div class="box">
+                    <h4>Clear Data</h4>
+                    The data is stored on the web browser. To remove it, click
+                    the 'Clear Data' button to remove the data from your web 
+                    browser.
                 </div>
             </div>
         </div>
     </div>
     <footer class="footer">
-        <a href="index.html">Go to home page</a>
+        <a href="index.html"> Go to Main Page</a>
     </footer>
 </body>
 </html>

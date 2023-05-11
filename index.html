@@ -11,11 +11,18 @@
 <body>
     <div class="wrapper">
         <!-- wrapper  -->
-        <header class="header"><h1>Cleanup Homepage</h1></header>
+        <header class="header"><h1>Tracking Trash and Debris Cleanups in Price George's County Watersheds</h1></header>
         <div class="container">
             <div class="left_section box">
                 <!-- left inputs -->
                 <h3>Form and User Inputs</h3>
+                <p>Both the text input filter and dropdown menu filter perform the same functionality. 
+                  They will reduce the dataset to only cleanups that used a certain
+                  number of bags to finish. For example, you may be interested in small cleanups, and so filtering 
+                  to show cleanups that only needed 1 bag would be a good place to start. Alternatively, you may be interested in large
+                  cleanups, so filter to only show cleanups that needed 10 bags to complete. 
+                </p>
+                <p>**Note: For the text input filter, only whole numbers from 1-10 inclusive are valid.</p>
       
                 <form
                   action="https://data.princegeorgescountymd.gov/resource/9tsa-iner.json"
@@ -24,12 +31,12 @@
                   <button type="button" id="data_load">Load Cleanup Data</button>
                   <button type="button" id="data_clear">Clear Data</button>
                   <div>
-                    <label for="destro">Filter by # of Trash Bags Used (1-10)</label>
+                    <label for="destro">Filter by Text Input</label>
                     <input type="text" id="destro" name="destro"/>
                   </div>
                   <!-- Start of dropdown portion -->
                   <div>
-                    <label for='select1'>Number of Bags Dropdown Menu</label>
+                    <label for='select1'>Filter with Dropdown Menu</label>
                     <select id='select1' name='select1'>
                       <option value= 1>1</option>
                       <option value= 2>2</option>
@@ -54,8 +61,9 @@
                 <div>
                   <canvas id="myChart"></canvas>
                 </div>
+                <h4>Date of Cleanup and Num. of Bags Used</h4>
                 <ol class="box" id="cleanup_list">
-                  List of cleanup orgs + watersheds
+                  List of cleanups
                 </ol>
               </div>
         </div>

@@ -1,5 +1,5 @@
 
-# **Trash and Debris Cleanups in Prince George's County Project **
+# Trash and Debris Cleanups in Prince George's County Project
 
 [Github Pages Link](https://andychan33.github.io/inst377-domain-final-project/)
 
@@ -14,7 +14,7 @@ and group clean-up events".
 
 [LitterTRAK Data Portal Link](https://data.princegeorgescountymd.gov/Environment/LitterTRAK/9tsa-iner)
 
-[LitterTRAK API/ Link](https://data.princegeorgescountymd.gov/resource/9tsa-iner.json)
+[LitterTRAK API Link](https://data.princegeorgescountymd.gov/resource/9tsa-iner.json)
 
 ## CSS Frameworks
 I did not use an external CSS framework to stylize this website project. I used

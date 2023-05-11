@@ -72,7 +72,7 @@
 
 html {
   background-color: #fff;
-  color: #EC3325;
+  color: rgb(28, 44, 91);
   font-size: 16px;
   min-width: 300px;
   overflow-x: hidden;
@@ -157,10 +157,10 @@ form {
 
   /* colors */
   background-color: rgb(185, 218, 231);
-  color: #EC3325;
+  color: rgb(28, 44, 91);
 
   /* shapes */
-  border-style: dashed;
+  border-style: inset;
   border-radius: 6px;
   font-size: 1.5rem;
   padding: 1.25rem;
@@ -193,7 +193,7 @@ form {
 
 .box {
   background-color: rgba(239, 239, 239, 0.40);
-  border: 2px dashed;
+  border: 2px groove;
   border-radius: 4px;
 
   width: fit-content;
@@ -226,6 +226,7 @@ form {
   width: 80vw;
 }
 
+
 /*
   This block is actually dependent on the "container" block having a flex set on it
   and the "wrapper" block displaying as a flex column with a "vertical height" (vh) of 100.
@@ -240,7 +241,7 @@ form {
   font-weight: 600;
   width: 100%;
 
-  border-style: dashed;
+  border-style: double;
 }
 
 .footer a {

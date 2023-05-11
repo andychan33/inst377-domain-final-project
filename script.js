@@ -13,9 +13,15 @@ function injectHTML(list) {
     const target = document.querySelector('#cleanup_list');
     target.innerHTML = '';
     list.forEach((item) => {
-        const str = `<li>${item.organization.concat(": ", item.major_wshed)}</li>`;
+        const str = `<li>${item.organization.concat(": ", item.major_wshed, ": ", item.number_bags)}</li>`;
         target.innerHTML += str;
     });
+}
+
+function filterList(list, query) {
+    return list.filter((item) => {
+        return item.number_bags == query;
+    })
 }
 
 function cutCleanupList(list) {
@@ -33,7 +39,7 @@ function initChart(target, data, labels) {
         data: {
           labels: labels,
           datasets: [{
-            label: 'Freqency of Cleanups for each Watershed',
+            label: 'Frequency of Cleanups for each Watershed',
             data: data,
             borderWidth: 1
           }]
@@ -49,46 +55,57 @@ function initChart(target, data, labels) {
       return chart;
 }
 
+// helper to de-scope charts
+function transportChart(chart) {
+    return chart;
+}
+
+function processChartData(passedData) {
+    const watershed_array = passedData.map(item => {
+        return {
+            major_wshed: item.major_wshed
+        }  
+    })
+    //console.log(watershed_array);
+
+    const dataForChart = watershed_array.reduce((col, item, idx) => {
+        if (!col[item.major_wshed]) {
+            col[item.major_wshed] = 1
+        }
+        else {
+            col[item.major_wshed] += 1
+        }
+        return col;
+    })
+
+    const dataSet = Object.values(dataForChart);
+    const labels = Object.keys(dataForChart);
+
+    return [dataSet, labels];
+}
+
 
 async function mainEvent() {
     const mainForm = document.querySelector('.main_form');
     const loadDataButton = document.querySelector('#data_load');
     const generateListButton = document.querySelector('#generate');
     const chart = document.querySelector('#myChart');
+    const textField = document.querySelector('#destro');
 
     let currentList = []; // scope is at the main event function level
-
-    
-
+    //let descoped_newChart = null;
+    let newChart = null;
+ 
     loadDataButton.addEventListener('click', async(submitEvent) => {
         console.log('loading data');
 
         const results = await fetch('https://data.princegeorgescountymd.gov/resource/9tsa-iner.json');
-        currentList = await results.json();
+        currentList = await results.json(); 
         console.log('table currentList');
-
+        console.table(currentList);
         
-        const w_shed_array = currentList.map(item => {
-            return {
-                major_wshed: item.major_wshed
-            }  
-        })
-        //console.log(w_shed_array);
-
-        const dataForChart = w_shed_array.reduce((col, item, idx) => {
-            if (!col[item.major_wshed]) {
-                col[item.major_wshed] = 1
-            }
-            else {
-                col[item.major_wshed] += 1
-            }
-            return col;
-        })
-
-        const dataSet = Object.values(dataForChart);
-        const labels = Object.keys(dataForChart);
-        console.log(dataForChart);
-        const newChart = initChart(chart, dataSet, labels);
+        let chartData = processChartData(currentList);
+        newChart = initChart(chart, chartData[0], chartData[1]);
     })
 
     // Button Events Listeners below
@@ -97,8 +114,18 @@ async function mainEvent() {
         console.log('generate new cleanup list');
         const cleanupList = cutCleanupList(currentList);
         injectHTML(cleanupList);
+    })
 
-})
+    textField.addEventListener('input', (event) => {
+        console.log('input', event.target.value);
+        const newList = filterList(currentList, event.target.value);
+        console.log(newList);
+        console.table(newList);
+        injectHTML(newList);
+        newChart.destroy()
+        let fChartData = processChartData(newList);
+        newChart = initChart(chart, fChartData[0], fChartData[1]);
+    })
 }
 
 
